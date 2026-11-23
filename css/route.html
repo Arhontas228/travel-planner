@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Маршрут — Travel Planner</title>
+  <!-- Подключаем Leaflet (карты) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Летающие самолеты -->
+    <div class="bg-plane bg-plane-1">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" /></svg>
+      </div>
+      <div class="bg-plane bg-plane-2">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" /></svg>
+      </div>
+      <div class="bg-plane bg-plane-3">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" /></svg>
+      </div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">✈️ <span>Travel Planner</span></a>
+      <nav class="nav">
+        <a href="index.html">← Назад к маршрутам</a>
+        <button class="theme-btn">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="app">
+    <!-- Сюда JS вставит заголовок и статистику -->
+  </main>
+
+  <footer class="footer">
+    © 2025 Travel Planner. Автор: <strong>Панин Андрей Андреевич</strong>
+  </footer>
+
+  <!-- Модалка добавления точки -->
+  <div class="modal" id="pointModal">
+    <div class="modal__box">
+      <h3>Новая точка</h3>
+      <form class="form" id="pointForm">
+        <div>
+          <label>Название точки *</label>
+          <input name="name" required placeholder="Например: Эрмитаж">
+        </div>
+        <div class="form-row">
+          <div>
+            <label>Время (необяз.)</label>
+            <input type="time" name="time">
+          </div>
+          <div>
+            <label>Стоимость (₽)</label>
+            <input type="number" name="cost" value="0" min="0" step="50">
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label>Широта (lat)</label>
+            <input type="number" name="lat" step="any" placeholder="59.9398">
+          </div>
+          <div>
+            <label>Долгота (lng)</label>
+            <input type="number" name="lng" step="any" placeholder="30.3146">
+          </div>
+        </div>
+        <div>
+          <label>Заметка</label>
+          <input name="note" placeholder="Что взять с собой или куда смотреть">
+        </div>
+        <div style="display:flex;gap:10px;margin-top:10px">
+          <button type="submit" class="btn">Сохранить</button>
+          <button type="button" class="btn btn--ghost" onclick="document.getElementById('pointModal').classList.remove('open')">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/route.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профиль — Travel Planner</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+      <!-- Летающие самолеты -->
+  <div class="bg-plane bg-plane-1">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" /></svg>
+  </div>
+  <div class="bg-plane bg-plane-2">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" /></svg>
+  </div>
+  <div class="bg-plane bg-plane-3">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" /></svg>
+  </div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">✈️ <span>Travel Planner</span></a>
+      <nav class="nav">
+        <a href="index.html">Маршруты</a>
+        <button class="theme-btn">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="author-badge" style="margin-top:30px;">
+      <div class="author-badge__avatar">ПАА</div>
+      <div class="author-badge__info">
+        <span class="author-badge__name">Панин Андрей Андреевич</span>
+        <span class="author-badge__role">Разработчик проекта</span>
+      </div>
+    </div>
+
+    <h1 class="page-title">Мой профиль</h1>
+    <p class="page-subtitle">Здесь отображается ваша статистика путешествий</p>
+
+    <div class="stats" id="profileStats"></div>
+
+    <div class="form" style="margin-top:24px">
+      <h3>Аккаунт</h3>
+      <div>
+        <label>Имя пользователя</label>
+        <input type="text" id="userName" readonly style="opacity:0.7">
+      </div>
+      <div>
+        <label>Email</label>
+        <input type="email" id="userEmail" readonly style="opacity:0.7">
+      </div>
+      <button class="btn btn--danger" onclick="logout()">Выйти из аккаунта</button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © 2025 Travel Planner. Автор: <strong>Панин Андрей Андреевич</strong>
+  </footer>
+
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if (!DB.getCurrentUser()) location.href = 'login.html';
+    
+    const user = DB.getCurrentUser();
+    document.getElementById('userName').value = user.name;
+    document.getElementById('userEmail').value = user.email;
+
+    // Подсчет статистики
+    const routes = DB.getRoutes();
+    const totalPoints = routes.reduce((s, r) => s + r.points.length, 0);
+    const totalSpent = routes.reduce((s, r) => s + r.points.reduce((a, p) => a + p.cost, 0), 0);
+
+    document.getElementById('profileStats').innerHTML = `
+      <div class="stat"><div class="stat__value">${routes.length}</div><div class="stat__label">Маршрутов</div></div>
+      <div class="stat"><div class="stat__value">${totalPoints}</div><div class="stat__label">Точек</div></div>
+      <div class="stat"><div class="stat__value">${fmtMoney(totalSpent)}</div><div class="stat__label">Потрачено</div></div>
+    `;
+
+    function logout() {
+      if (confirm('Выйти из аккаунта?')) {
+        DB.logout();
+        location.href = 'login.html';
+      }
+    }
+  </script>
+</body>
+</html>
