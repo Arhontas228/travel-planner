@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мои маршруты — Travel Planner</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <!-- Летающие самолеты -->
+   <div class="bg-plane bg-plane-1">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" /></svg>
+  </div>
+  <div class="bg-plane bg-plane-2">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" /></svg>
+  </div>
+  <div class="bg-plane bg-plane-3">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" /></svg>
+  </div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">✈️ <span>Travel Planner</span></a>
+      <nav class="nav">
+        <a href="index.html">Маршруты</a>
+        <a href="profile.html">Профиль</a>
+        <button class="theme-btn">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- ГЛАВНАЯ СЕТКА -->
+    <div class="hero-layout">
+      
+      <!-- ЛЕВАЯ КОЛОНКА (ОТЗЫВЫ) -->
+      <div class="hero-side-content">
+        <div class="side-card review-card">
+          <div class="side-card__header">
+            <img src="https://i.pravatar.cc/150?img=11" alt="Аватар" class="side-avatar">
+            <div>
+              <div class="side-name">Елена С.</div>
+              <div class="side-role">Эксперт по Европе</div>
+            </div>
+          </div>
+          <p class="side-text">«Планировщик просто спас меня! Добавила все точки за 10 минут, посчитала бюджет и ничего не забыла.»</p>
+          <div class="side-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="side-card review-card">
+          <div class="side-card__header">
+            <img src="https://i.pravatar.cc/150?img=33" alt="Аватар" class="side-avatar">
+            <div>
+              <div class="side-name">Максим В.</div>
+              <div class="side-role">Бэкпэкер</div>
+            </div>
+          </div>
+          <p class="side-text">«Очень удобно, что маршрут можно скачать в PDF. Показывал друзьям, все в восторге!»</p>
+          <div class="side-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+
+      <!-- ЦЕНТРАЛЬНАЯ КОЛОНКА -->
+      <div class="hero-center">
+        
+        <div class="author-badge">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Andrey&backgroundColor=0ea5e9" alt="Аватар" class="author-badge__avatar-img">
+          <div class="author-badge__info">
+            <span class="author-badge__name">Панин Андрей Андреевич</span>
+            <span class="author-badge__role">Автор проекта</span>
+          </div>
+        </div>
+
+        <h1 class="page-title">Мои путешествия</h1>
+        <p class="page-subtitle">Планируйте маршруты, добавляйте точки и считайте бюджет</p>
+
+        <div class="stats" id="stats"></div>
+
+        <button class="btn" id="addBtn" style="margin-bottom: 24px;">➕ Новый маршрут</button>
+
+        <div class="promo-card">
+          <div class="promo-badge">🔥 Горячее предложение</div>
+          <h3 class="promo-title">Куда полететь в этом сезоне?</h3>
+          <p class="promo-text">Эксперты Travel Planner советуют <b>Сочи</b>! Бархатный сезон, теплое море и горы. Идеально для перезагрузки.</p>
+          <button class="btn btn--promo" onclick="quickCreate('Сочи', 'Пляжный отдых в бархатный сезон')">
+            ✈️ Запланировать поездку
+          </button>
+        </div>
+      </div>
+
+      <!-- ПРАВАЯ КОЛОНКА (РЕКОМЕНДАЦИИ) -->
+      <div class="hero-side-content">
+        <div class="side-card top-destinations">
+          <div class="side-card__header" style="margin-bottom:16px;">
+            <span class="side-icon" style="background:rgba(14,165,233,.15); color:#0ea5e9;">🌍</span>
+            <div class="side-name">Топ направлений</div>
+          </div>
+          
+          <div class="dest-item" onclick="quickCreate('Санкт-Петербург', 'Прогулка по крышам и разводные мосты')">
+            <div class="dest-icon">🌉</div>
+            <div class="dest-info">
+              <div class="dest-name">Санкт-Петербург</div>
+              <div class="dest-price">от 15 000 ₽</div>
+            </div>
+          </div>
+          
+          <div class="dest-item" onclick="quickCreate('Алтай', 'Поход к горе Белуха и чистые озера')">
+            <div class="dest-icon">🏔️</div>
+            <div class="dest-info">
+              <div class="dest-name">Алтай</div>
+              <div class="dest-price">от 35 000 ₽</div>
+            </div>
+          </div>
+          
+          <div class="dest-item" onclick="quickCreate('Москва', 'Экскурсия по Кремлю и Красной площади')">
+            <div class="dest-icon">🏛️</div>
+            <div class="dest-info">
+              <div class="dest-name">Москва</div>
+              <div class="dest-price">от 12 000 ₽</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="side-card tip-card">
+          <div class="side-card__header">
+            <span class="side-icon">💡</span>
+            <div class="side-name">Лайфхак дня</div>
+          </div>
+          <p class="side-text">Вводите реальные координаты (lat и lng) при добавлении точек — так на карте автоматически построится правильный пеший маршрут!</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- СЕТКА МАРШРУТОВ -->
+    <div class="grid" id="grid" style="margin-top: 20px;"></div>
+
+    <!-- НЕБЕСНАЯ ПОЛОСА (САМОЛЕТЫ СНИЗУ) -->
+    <div class="sky-decor">
+      <svg class="sky-path" viewBox="0 0 1000 100" preserveAspectRatio="none">
+        <path d="M-50,80 Q250,-20 500,50 T1050,20" fill="none" stroke="var(--primary)" stroke-width="3" stroke-dasharray="10 10" opacity="0.4"/>
+      </svg>
+      <div class="decor-plane decor-plane-left">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" /></svg>
+      </div>
+      <div class="decor-plane decor-plane-right">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" /></svg>
+      </div>
+      <div class="cloud cloud-1">☁️</div>
+      <div class="cloud cloud-2">☁️</div>
+      <div class="cloud cloud-3">☁️</div>
+      <div class="sky-quote">
+        <h2>«Мир настолько велик, что сидеть на месте — преступление»</h2>
+        <p>Начни свое путешествие прямо сейчас!</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <!-- Блок повторяем 2 раза для бесшовной анимации -->
+        <div class="ticker-item">
+          👨‍💻 Автор проекта: <strong>Панин Андрей Андреевич</strong>
+          <span class="ticker-divider">|</span>
+          📞 Связаться со мной: <span>+7 969 349 86 63</span>
+          <span class="ticker-divider">|</span>
+          🌍 Travel Planner © 2025
+          <span class="ticker-divider">|</span>
+        </div>
+        <div class="ticker-item">
+          👨‍💻 Автор проекта: <strong>Панин Андрей Андреевич</strong>
+          <span class="ticker-divider">|</span>
+          📞 Связаться со мной: <span>+7 969 349 86 63</span>
+          <span class="ticker-divider">|</span>
+          🌍 Travel Planner © 2025
+          <span class="ticker-divider">|</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модалка создания -->
+  <div class="modal" id="modal">
+    <div class="modal__box">
+      <h3>Новый маршрут</h3>
+      <form class="form" id="form">
+        <div><label>Название</label><input name="title" required placeholder="Например: Питер на выходные"></div>
+        <div><label>Описание</label><input name="description" placeholder="Кратко о поездке"></div>
+        <div class="form-row">
+          <div><label>Начало</label><input type="date" name="startDate"></div>
+          <div><label>Конец</label><input type="date" name="endDate"></div>
+        </div>
+        <div><label>Бюджет (₽)</label><input type="number" name="budget" value="0"></div>
+        <div style="display:flex; gap:10px; margin-top:10px">
+          <!-- Кнопка СОЗДАТЬ (тип submit - обязателен) -->
+          <button type="submit" class="btn">Создать</button>
+          
+          <!-- Кнопка ОТМЕНА -->
+          <button type="button" class="btn btn--ghost" onclick="document.getElementById('modal').classList.remove('open')">Отмена</button>
+        </div>
+
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
